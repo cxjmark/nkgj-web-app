@@ -1,36 +1,63 @@
-name: Node CI
+name: Deploy
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
         with:
-          version: 7.9.5
+          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'pnpm'
-      - uses: actions/cache@v3 # cache pnpm packages
-        id: pnpm-cache
+          node-version: 16
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn docs:build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: | 
-            **/node_modules
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - name: Pnpm install
-        if: steps.pnpm-cache.outputs.cache-hit != 'true'
-        run: pnpm i
-      - name: Unit Test
-        run: |
-          pnpm run test
-      - name: Build Docs
-        run: |
-          pnpm run docs:build
-        env:
-          CI: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
+          # cname: example.com # if wanna deploy to custom domain
+
+  如果你使用的是 pnpm，那么需要使用下面的配置：
+yaml复制代码name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm docs:build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
+          # cname: example.com # if wanna deploy to custom domain
