@@ -1,5 +1,8 @@
 *.md
 *.vue
+*.ts
+*.txs
+.json
 dist
 pnpm-lock.yaml
 cache
