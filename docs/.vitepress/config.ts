@@ -4,7 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Inspect from 'vite-plugin-inspect'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  // base: '/niuku-web-docs/',
+  base: '/niuku-web-docs/',
   title: "web docs",
   description: "前端工程工具、组件、配置等文档说明",
   markdown: {
