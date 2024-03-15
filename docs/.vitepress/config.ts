@@ -19,8 +19,7 @@ export default defineConfig({
     plugins: [demoblockVitePlugin(), vueJsx(), Inspect()],
   },
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/logo.svg' }],
+    ['link', { rel: 'icon', href: '/logo.svg' }],
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Niuku docs' }],
