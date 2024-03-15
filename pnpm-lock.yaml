@@ -68,9 +68,6 @@ importers:
 
   docs:
     dependencies:
-      '@nk/shared':
-        specifier: workspace:^
-        version: link:../packages/shared
       primevue:
         specifier: ^3.49.1
         version: 3.49.1(vue@3.4.21)

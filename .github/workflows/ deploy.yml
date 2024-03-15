@@ -29,9 +29,6 @@ jobs:
       - name: Unit Test
         run: |
           pnpm run test
-      - name: Build Lib
-        run: |
-          pnpm build
       - name: Build Docs
         run: |
           pnpm run docs:build
