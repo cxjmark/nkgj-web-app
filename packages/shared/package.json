@@ -1,0 +1,19 @@
+{
+  "name": "@nk/shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/shared.umd.js",
+  "module": "./dist/shared.es.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash-es": "^4.17.12",
+    "dayjs": "^1.11.10",
+    "lodash-es": "^4.17.21"
+  }
+}

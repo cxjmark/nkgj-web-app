@@ -1,0 +1,34 @@
+{
+  "name": "nkgj-web-app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx,.vue --fix ./",
+    "docs:dev": "pnpm --filter @nk/docs run docs:dev",
+    "build": "tsx scripts/build",
+    "build:docs": "pnpm --filter @nk/docs run docs:build",
+    "build:shared": "pnpm --filter @nk/shared run build",
+    "build:vue-ui": "pnpm --filter @nk/vue-components run build",
+    "build:all": "pnpm build:shared && pnpm build:vue-ui && pnpm build:docs"
+  },
+  "devDependencies": {
+    "@nk/eslint-config": "workspace:^",
+    "@types/node": "^20.11.25",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "colorette": "^2.0.20",
+    "eslint": "^8.57.0",
+    "eslint-define-config": "^2.1.0",
+    "execa": "^8.0.1",
+    "inquirer": "^9.2.15",
+    "prettier": "^3.2.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.5",
+    "vite-plugin-build": "^0.10.0",
+    "vite-plugin-dts": "^3.7.3",
+    "vue-eslint-parser": "^9.4.2",
+    "vue-tsc": "^2.0.6"
+  }
+}

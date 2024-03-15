@@ -1,0 +1,39 @@
+name: Node CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.9.5
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - uses: actions/cache@v3 # cache pnpm packages
+        id: pnpm-cache
+        with:
+          path: | 
+            **/node_modules
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+      - name: Pnpm install
+        if: steps.pnpm-cache.outputs.cache-hit != 'true'
+        run: pnpm i
+      - name: Unit Test
+        run: |
+          pnpm run test
+      - name: Build Lib
+        run: |
+          pnpm build
+      - name: Build Docs
+        run: |
+          pnpm run docs:build
+        env:
+          CI: true
