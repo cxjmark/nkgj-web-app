@@ -3,4 +3,5 @@ dist
 pnpm-debug.log*
 .DS_Store
 .cache
-apps/
+apps/**
+!apps/index.md
