@@ -28,6 +28,6 @@ jobs:
         run: pnpm install
       - name: Build Docs
         run: |
-          pnpm run docs:build
+          pnpm  build:docs
         env:
           CI: true
