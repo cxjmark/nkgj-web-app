@@ -15,5 +15,8 @@
     "@types/lodash-es": "^4.17.12",
     "dayjs": "^1.11.10",
     "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@nk/eslint-config": "workspace:^"
   }
 }

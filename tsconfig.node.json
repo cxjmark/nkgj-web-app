@@ -13,6 +13,7 @@
     "**/tests/**",
     "**/dist",
     "node_modules",
+    "apps/**/*",
     "**/dist",
     "**/__tests__/**/*",
     "**/gulpfile.ts",

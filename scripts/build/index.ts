@@ -1,15 +1,15 @@
 import inquirer from 'inquirer'
 import { execaCommand } from 'execa'
-import { magentaBright, bold } from 'colorette'
+import { bold, magentaBright } from 'colorette'
 
 const packageKeys = ['shared', 'vue-components']
-inquirer
-  .prompt([
+inquirer 
+  .prompt([ 
     {
       type: 'list',
       message: `选择要打包的包名：`,
       name: 'mono', // 存储答案的字段
-      default: packageKeys[0], // 默认启动项
+      default: packageKeys[0], // 默认启动项 
       choices: packageKeys.map((key) => {
         // 选择
         return { name: key, value: key }
@@ -22,7 +22,7 @@ inquirer
 
     const cmd = `pnpm --F @nk/${name} run build`
 
-    let envVars = {
+    const envVars = {
       selectedProject: name,
       product: prd,
       // project: project.projectKey,
